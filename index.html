@@ -14,17 +14,30 @@
   </head>
   <body>
     <div class="container">
-      <div id="title">Tic Tac Toe</div>
-      <div id="content">
-        <div id="level">Easy</div>
-        <div id="player-opt">
-          <div id="x"></div>
-          <div id="O"></div>
+      <div class="title" id="title">Tic Tac Toe</div>
+      <div class="content-wrap" id="content-wrap">
+        <div class="content" id="content">
+          <div class="level" id="level">Easy</div>
+          <div class="player-opt" id="player-opt">
+            <button class="x" id="x">X</button>
+            <button class="o" id="o">O</button>
+          </div>
+          <div class="end-game-msg" id="end-game-msg">Player X has won</div>
+          <div class="gameboard" id="gameboard">
+            <div class="board-box" id="board-box"></div>
+            <div class="board-box" id="board-box"></div>
+            <div class="board-box" id="board-box"></div>
+            <div class="board-box" id="board-box"></div>
+            <div class="board-box" id="board-box"></div>
+            <div class="board-box" id="board-box"></div>
+            <div class="board-box" id="board-box"></div>
+            <div class="board-box" id="board-box"></div>
+            <div class="board-box" id="board-box"></div>
+          </div>
+          <button class="restart" id="restart">Restart</button>
         </div>
-        <div id="gameboard"></div>
-        <button id="restart">Restart</button>
       </div>
-      <div id="footer">This is my footer</div>
+      <div class="footer" id="footer">This is my footer</div>
     </div>
   </body>
 </html>
