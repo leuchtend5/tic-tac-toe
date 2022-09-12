@@ -11,19 +11,19 @@ const gameBoard = (() => {
 })();
 
 const gameMain = (() => {
-  const allCell = document.querySelectorAll(".board-box");
+  const _allCell = document.querySelectorAll(".board-box");
 
   let _player_x_turn = true;
 
   let currentPlayer = () =>
     _player_x_turn ? gameBoard.player_x.mark : gameBoard.player_o.mark;
 
-  const switchTurn = () => {
+  const _switchTurn = () => {
     _player_x_turn = !_player_x_turn;
   };
 
   // iterate all the cells and add eventlistener to each one of them.
-  let cells = Array.from(allCell);
+  let _cells = Array.from(_allCell);
 
   const checkWinner = () => {
     const winCombination = [
@@ -42,13 +42,13 @@ const gameMain = (() => {
     // combination has the same mark using currentPlayer.
     return winCombination.some((combination) => {
       return combination.every((index) => {
-        return cells[index].textContent === currentPlayer();
+        return _cells[index].textContent === currentPlayer();
       });
     });
   };
 
-  const getIndex = (cell) => {
-    return (index = cells.indexOf(cell));
+  const _getIndex = (cell) => {
+    return (index = _cells.indexOf(cell));
   };
 
   const restart = () => {
@@ -56,12 +56,12 @@ const gameMain = (() => {
 
     _player_x_turn = true;
 
-    cells.forEach((cell) => {
+    _cells.forEach((cell) => {
       cell.textContent = "";
     });
   };
 
-  cells.forEach((cell) =>
+  _cells.forEach((cell) =>
     cell.addEventListener("click", () => {
       if (cell.textContent !== "") {
         return null;
@@ -70,9 +70,9 @@ const gameMain = (() => {
       } else {
         cell.textContent = gameBoard.player_o.mark;
       }
-      gameBoard.board.splice(getIndex(cell), 1, currentPlayer());
+      gameBoard.board.splice(_getIndex(cell), 1, currentPlayer());
       displayController.winnerMsg();
-      switchTurn();
+      _switchTurn();
     })
   );
 
@@ -80,36 +80,36 @@ const gameMain = (() => {
 })();
 
 const displayController = (() => {
-  const overlay = document.getElementById("overlay");
-  const endMsg = document.getElementById("end-game-msg");
-  const container = document.getElementById("container");
+  const _overlay = document.getElementById("overlay");
+  const _endMsg = document.getElementById("end-game-msg");
+  const _container = document.getElementById("container");
 
   const winnerMsg = () => {
     const checkCell = gameBoard.board.every((index) => index !== "");
 
     if (gameMain.checkWinner() == true) {
-      container.classList.add("active");
-      overlay.classList.add("active");
-      endMsg.classList.add("active");
-      endMsg.textContent = `Player ${gameMain.currentPlayer()} Wins`;
+      _container.classList.add("active");
+      _overlay.classList.add("active");
+      _endMsg.classList.add("active");
+      _endMsg.textContent = `Player ${gameMain.currentPlayer()} Wins`;
     } else if (checkCell == true) {
-      container.classList.add("active");
-      overlay.classList.add("active");
-      endMsg.classList.add("active");
-      endMsg.textContent = "It's a Draw";
+      _container.classList.add("active");
+      _overlay.classList.add("active");
+      _endMsg.classList.add("active");
+      _endMsg.textContent = "It's a Draw";
     }
   };
 
-  const restartBtn = document.getElementById("restart");
-  restartBtn.addEventListener("click", () => {
+  const _restartBtn = document.getElementById("restart");
+  _restartBtn.addEventListener("click", () => {
     gameMain.restart();
   });
 
-  overlay.addEventListener("click", () => {
-    container.classList.remove("active");
-    overlay.classList.remove("active");
-    endMsg.classList.remove("active");
-    endMsg.textContent = "";
+  _overlay.addEventListener("click", () => {
+    _container.classList.remove("active");
+    _overlay.classList.remove("active");
+    _endMsg.classList.remove("active");
+    _endMsg.textContent = "";
     gameMain.restart();
   });
 
