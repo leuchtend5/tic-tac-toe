@@ -14,7 +14,7 @@ body {
 }
 
 .container {
-  display: none; /* temporary. It should be flex*/
+  display: flex; /* temporary. It should be flex*/
   flex-direction: column;
   align-items: center;
   height: 100%;
@@ -93,7 +93,7 @@ body {
   left: 0;
   opacity: 0.25;
   z-index: 1;
-  display: none; /* temporary */
+  display: flex; /* temporary */
 }
 
 .overlay.active {
@@ -109,7 +109,7 @@ body {
   background-color: rgba(255, 255, 255, 0.7);
   border-radius: 8px;
   box-shadow: rgba(0, 0, 0, 0.1) 1px 2px 8px;
-  display: none; /* temporary */
+  display: flex; /* temporary */
   align-items: center;
   justify-content: center;
   font-size: 1.6rem;
@@ -126,11 +126,11 @@ body {
   transform: scale(1, 1);
 }
 
-.form {
+/* .form {
   display: flex;
   justify-content: center;
   align-items: center;
   font-family: custom-font;
   height: 100vh;
   background-color: pink;
-}
+} */
